@@ -1,0 +1,30 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
+module.exports = (env, argv) => ({
+  entry: path.resolve(__dirname, "src/index.jsx"),
+  output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "bundle-[hash].js",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "index.html"),
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: "babel-loader",
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
+  devServer: {
+    historyApiFallback: true,
+  },
+});
