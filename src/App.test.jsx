@@ -12,6 +12,7 @@ describe("App", () => {
   useSelector.mockImplementation((selector) =>
     selector({
       customer: "sogoagain",
+      waitTime: 15,
     })
   );
 
@@ -37,5 +38,13 @@ describe("App", () => {
     const customerEl = screen.getByText(/\[띵동\] sogoagain 고객님/);
 
     expect(customerEl).toBeInTheDocument();
+  });
+
+  it("renders the expected wait time", () => {
+    render(<App />);
+
+    const waitTimeEl = screen.getByText(/예상 대기 시간: 15초/);
+
+    expect(waitTimeEl).toBeInTheDocument();
   });
 });
