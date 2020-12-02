@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { render, screen, fireEvent } from "@testing-library/react";
 
+import { setInputValue } from "./features/appSlice";
+
 import App from "./App";
 
 jest.mock("react-redux");
@@ -13,8 +15,11 @@ describe("App", () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) =>
     selector({
-      customer: "sogoagain",
-      waitTime: 15,
+      app: {
+        customer: "sogoagain",
+        waitTime: 15,
+        inputValue: "",
+      },
     })
   );
 
@@ -63,7 +68,7 @@ describe("App", () => {
     fireEvent.change(inputEl, { target: { value: "sogoagain" } });
     fireEvent.submit(buttonEl);
 
-    expect(inputEl.value).toEqual("");
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toHaveBeenCalledWith(setInputValue("sogoagain"));
+    expect(dispatch).toHaveBeenCalledWith(setInputValue(""));
   });
 });

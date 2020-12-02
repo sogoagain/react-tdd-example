@@ -11,8 +11,11 @@ jest.mock("react-redux");
 describe("StatusBoardContainer", () => {
   useSelector.mockImplementation((selector) =>
     selector({
-      customer: "sogoagain",
-      waitTime: 20,
+      app: {
+        customer: "sogoagain",
+        waitTime: 20,
+        inputValue: "",
+      },
     })
   );
 

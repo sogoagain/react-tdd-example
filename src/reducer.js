@@ -1,3 +1,7 @@
 import { combineReducers } from "redux";
 
-export default combineReducers({});
+import app from "./features/appSlice";
+
+export default combineReducers({
+  app,
+});
