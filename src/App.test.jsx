@@ -86,7 +86,7 @@ describe("App", () => {
     render(<App />);
 
     ["홍길동", "홍길순"].forEach((name) => {
-      const listItemEl = screen.getByRole("listitem", { name });
+      const listItemEl = screen.getByText(new RegExp(name));
       expect(listItemEl).toBeInTheDocument();
     });
   });
