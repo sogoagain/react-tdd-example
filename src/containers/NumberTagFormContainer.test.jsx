@@ -38,5 +38,6 @@ describe("NumberTagFormContainer", () => {
 
     expect(dispatch).toHaveBeenCalledWith(setInputValue("sogoagain"));
     expect(dispatch).toHaveBeenCalledWith(setInputValue(""));
+    expect(dispatch).toBeCalledTimes(3);
   });
 });
