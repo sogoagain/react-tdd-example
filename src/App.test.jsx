@@ -1,20 +1,26 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 import App from "./App";
 
 jest.mock("react-redux");
 
 describe("App", () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) =>
     selector({
       customer: "sogoagain",
       waitTime: 15,
     })
   );
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
 
   it("renders title", () => {
     render(<App />);
@@ -46,5 +52,18 @@ describe("App", () => {
     const waitTimeEl = screen.getByText(/예상 대기 시간: 15초/);
 
     expect(waitTimeEl).toBeInTheDocument();
+  });
+
+  it("renders the form that pulls the number tag", () => {
+    render(<App />);
+
+    const inputEl = screen.getByLabelText(/이름/);
+    const buttonEl = screen.getByRole("button", { name: "뽑기" });
+
+    fireEvent.change(inputEl, { target: { value: "sogoagain" } });
+    fireEvent.submit(buttonEl);
+
+    expect(inputEl.value).toEqual("");
+    expect(dispatch).toBeCalled();
   });
 });
