@@ -1,23 +1,12 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
-
 import { render, screen } from "@testing-library/react";
 
-import StatusBoardContainer from "./StatusBoardContainer";
+import StatusBoard from "./StatusBoard";
 
-jest.mock("react-redux");
-
-describe("StatusBoardContainer", () => {
-  useSelector.mockImplementation((selector) =>
-    selector({
-      customer: "sogoagain",
-      waitTime: 20,
-    })
-  );
-
+describe("StatusBoard", () => {
   it("renders the name of the customer being consulted", () => {
-    render(<StatusBoardContainer />);
+    render(<StatusBoard customer="sogoagain" waitTime={20} />);
 
     const customerEl = screen.getByText(/\[띵동\] sogoagain 고객님/);
 
@@ -25,7 +14,7 @@ describe("StatusBoardContainer", () => {
   });
 
   it("renders the expected wait time", () => {
-    render(<StatusBoardContainer />);
+    render(<StatusBoard customer="sogoagain" waitTime={20} />);
 
     const waitTimeEl = screen.getByText(/예상 대기 시간: 20초/);
 
