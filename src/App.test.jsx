@@ -12,4 +12,12 @@ describe("App", () => {
 
     expect(titleEl).toBeInTheDocument();
   });
+
+  it("renders greetings", () => {
+    render(<App />);
+
+    const greetingEl = screen.getByText(/고객님, 오늘도 행복한 하루 되세요./);
+
+    expect(greetingEl).toBeInTheDocument();
+  });
 });
