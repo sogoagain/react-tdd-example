@@ -6,6 +6,7 @@ const { actions, reducer } = createSlice({
     customer: "",
     inputValue: "",
     waitTime: 0,
+    queue: [],
   },
   reducers: {
     setInputValue: (state, { payload: inputValue }) => ({

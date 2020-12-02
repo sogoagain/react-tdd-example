@@ -19,6 +19,16 @@ describe("App", () => {
         customer: "sogoagain",
         waitTime: 15,
         inputValue: "",
+        queue: [
+          {
+            number: 1,
+            name: "홍길동",
+          },
+          {
+            number: 2,
+            name: "홍길순",
+          },
+        ],
       },
     })
   );
@@ -70,5 +80,14 @@ describe("App", () => {
 
     expect(dispatch).toHaveBeenCalledWith(setInputValue("sogoagain"));
     expect(dispatch).toHaveBeenCalledWith(setInputValue(""));
+  });
+
+  it("renders the queue", () => {
+    render(<App />);
+
+    ["홍길동", "홍길순"].forEach((name) => {
+      const listItemEl = screen.getByRole("listitem", { name });
+      expect(listItemEl).toBeInTheDocument();
+    });
   });
 });
