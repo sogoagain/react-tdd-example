@@ -7,6 +7,7 @@ import Greetings from "./components/Greetings";
 
 import StatusBoardContainer from "./containers/StatusBoardContainer";
 import NumberTagFormContainer from "./containers/NumberTagFormContainer";
+import QueueContainer from "./containers/QueueContainer";
 
 export default function App() {
   const { queue } = useSelector(({ app }) => app);
@@ -17,13 +18,7 @@ export default function App() {
       <Greetings />
       <StatusBoardContainer />
       <NumberTagFormContainer />
-      <ul>
-        {queue.map(({ number, name }) => (
-          <li key={number}>
-            [{number}] {name}
-          </li>
-        ))}
-      </ul>
+      <QueueContainer />
     </>
   );
 }
