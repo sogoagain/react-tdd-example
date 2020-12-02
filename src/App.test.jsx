@@ -34,7 +34,7 @@ describe("App", () => {
   it("renders the name of the customer being consulted", () => {
     render(<App />);
 
-    const customerEl = screen.getByText(/[띵동] sogoagain고객님/);
+    const customerEl = screen.getByText(/\[띵동\] sogoagain 고객님/);
 
     expect(customerEl).toBeInTheDocument();
   });
