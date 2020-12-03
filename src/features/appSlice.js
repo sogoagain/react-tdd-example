@@ -52,7 +52,7 @@ export const {
 } = actions;
 
 export function enqueue() {
-  return function(dispatch, getState) {
+  return (dispatch, getState) => {
     const {
       app: { number, inputValue },
     } = getState();
@@ -65,7 +65,7 @@ export function enqueue() {
 }
 
 export function dequeue() {
-  return function(dispatch, getState) {
+  return (dispatch, getState) => {
     const {
       app: { queue },
     } = getState();
