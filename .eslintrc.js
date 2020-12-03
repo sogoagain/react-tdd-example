@@ -4,7 +4,7 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  extends: ["plugin:react/recommended", "airbnb"],
+  extends: ["plugin:react/recommended", "airbnb", "prettier"],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
@@ -21,7 +21,7 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "prettier"],
   rules: {
     indent: ["error", 2],
     "no-trailing-spaces": "error",
@@ -47,5 +47,6 @@ module.exports = {
     "react/prop-types": "off",
     "linebreak-style": "off",
     "no-proto": "off",
+    "react/jsx-one-expression-per-line": "off",
   },
 };

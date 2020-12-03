@@ -19,7 +19,7 @@ describe("NumberTagForm", () => {
         value="홍길동"
         onSubmit={handleSubmit}
         onChange={handleChange}
-      />
+      />,
     );
 
     const inputEl = screen.getByLabelText(/이름/);

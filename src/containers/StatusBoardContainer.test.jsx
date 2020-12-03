@@ -16,7 +16,7 @@ describe("StatusBoardContainer", () => {
         waitTime: 20,
         inputValue: "",
       },
-    })
+    }),
   );
 
   it("renders the name of the customer being consulted", () => {

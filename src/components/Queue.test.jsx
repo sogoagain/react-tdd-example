@@ -6,7 +6,7 @@ import Queue from "./Queue";
 
 describe("Queue", () => {
   it("renders the queue", () => {
-    const queue = [{ number: 1, name: "홍길동", number: 2, name: "홍길순" }];
+    const queue = [{ number: 1, name: "홍길동" }, { number: 2, name: "홍길순" }];
 
     render(<Queue queue={queue} />);
 

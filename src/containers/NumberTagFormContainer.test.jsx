@@ -20,7 +20,7 @@ describe("NumberTagFormContainer", () => {
         waitTime: 15,
         inputValue: "",
       },
-    })
+    }),
   );
 
   beforeEach(() => {

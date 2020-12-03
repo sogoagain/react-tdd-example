@@ -31,7 +31,7 @@ describe("BankPage", () => {
         ],
         number: 1,
       },
-    })
+    }),
   );
 
   beforeEach(() => {

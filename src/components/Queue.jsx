@@ -5,7 +5,11 @@ export default function Queue({ queue }) {
     <ul>
       {queue.map(({ number, name }) => (
         <li key={number}>
-          [{number}] {name}
+          [
+          {number}
+          ]
+          {' '}
+          {name}
         </li>
       ))}
     </ul>

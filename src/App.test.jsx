@@ -31,7 +31,7 @@ describe("App", () => {
         ],
         number: 1,
       },
-    })
+    }),
   );
 
   beforeEach(() => {
