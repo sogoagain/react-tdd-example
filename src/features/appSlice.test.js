@@ -44,27 +44,53 @@ describe("app", () => {
   });
 
   describe("dequeue", () => {
-    const initialState = {
-      app: {
-        customer: "",
-        inputValue: "",
-        waitTime: 0,
-        queue: [{ number: 1, name: "홍길동" }],
-        number: 1,
-      },
-    };
+    context("when the queue is not empty", () => {
+      const initialState = {
+        app: {
+          customer: "",
+          inputValue: "",
+          waitTime: 0,
+          queue: [{ number: 1, name: "홍길동" }],
+          number: 1,
+        },
+      };
 
-    beforeEach(() => {
-      store = mockStore(initialState);
+      beforeEach(() => {
+        store = mockStore(initialState);
+      });
+
+      it("remove the customer from the queue", () => {
+        store.dispatch(dequeue());
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setCustomer("홍길동"));
+        expect(actions[1]).toEqual(popQueue());
+      });
     });
 
-    it("remove the customer from the queue", () => {
-      store.dispatch(dequeue());
+    context("when the queue is empty", () => {
+      const initialState = {
+        app: {
+          customer: "",
+          inputValue: "",
+          waitTime: 0,
+          queue: [],
+          number: 1,
+        },
+      };
 
-      const actions = store.getActions();
+      beforeEach(() => {
+        store = mockStore(initialState);
+      });
 
-      expect(actions[0]).toEqual(setCustomer("홍길동"));
-      expect(actions[1]).toEqual(popQueue());
+      it("does not remove the customer from the queue", () => {
+        store.dispatch(dequeue());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
     });
   });
 });

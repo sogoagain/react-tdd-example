@@ -59,6 +59,10 @@ export function dequeue() {
       app: { queue },
     } = getState();
 
+    if (queue.length === 0) {
+      return;
+    }
+
     dispatch(setCustomer(queue[0].name));
     dispatch(popQueue());
   };
