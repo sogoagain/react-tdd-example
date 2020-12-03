@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+import NumberTagForm from "../components/NumberTagForm";
 
 import { setInputValue, enqueue } from "../features/appSlice";
 
@@ -18,16 +19,10 @@ export default function NumberTagFormContainer() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="input-name">이름</label>
-      <input
-        type="text"
-        name="name"
-        id="input-name"
-        value={inputValue}
-        onChange={handleChange}
-      />
-      <button type="submit">뽑기</button>
-    </form>
+    <NumberTagForm
+      value={inputValue}
+      onChange={handleChange}
+      onSubmit={handleSubmit}
+    />
   );
 }
