@@ -2,7 +2,7 @@ import { getDefaultMiddleware } from "@reduxjs/toolkit";
 
 import configureStore from "redux-mock-store";
 
-import { enqueue, setInputValue, pushQueue } from "./appSlice";
+import { enqueue, setInputValue, pushQueue, increaseNumber } from "./appSlice";
 
 const mockStore = configureStore(getDefaultMiddleware());
 
@@ -16,6 +16,7 @@ describe("app", () => {
         inputValue: "홍길동",
         waitTime: 0,
         queue: [],
+        number: 1,
       },
     };
 
@@ -29,7 +30,8 @@ describe("app", () => {
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(pushQueue({ number: 1, name: "홍길동" }));
-      expect(actions[1]).toEqual(setInputValue(""));
+      expect(actions[1]).toEqual(increaseNumber());
+      expect(actions[2]).toEqual(setInputValue(""));
     });
   });
 });
