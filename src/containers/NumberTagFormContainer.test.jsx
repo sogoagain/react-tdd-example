@@ -37,7 +37,6 @@ describe("NumberTagFormContainer", () => {
     fireEvent.submit(buttonEl);
 
     expect(dispatch).toHaveBeenCalledWith(setInputValue("sogoagain"));
-    expect(dispatch).toHaveBeenCalledWith(setInputValue(""));
-    expect(dispatch).toBeCalledTimes(3);
+    expect(dispatch).toBeCalledTimes(2);
   });
 });

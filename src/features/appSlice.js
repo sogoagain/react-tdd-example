@@ -18,4 +18,9 @@ const { actions, reducer } = createSlice({
 
 export const { setInputValue } = actions;
 
+export function enqueue() {
+  return function (dispatch, getState) {
+    return;
+  };
+}
 export default reducer;

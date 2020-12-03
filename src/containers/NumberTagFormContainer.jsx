@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { setInputValue } from "../features/appSlice";
+import { setInputValue, enqueue } from "../features/appSlice";
 
 export default function NumberTagFormContainer() {
   const { inputValue } = useSelector(({ app }) => app);
@@ -10,7 +10,7 @@ export default function NumberTagFormContainer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setInputValue(""));
+    dispatch(enqueue());
   };
 
   const handleChange = (e) => {

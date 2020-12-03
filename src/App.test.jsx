@@ -79,7 +79,7 @@ describe("App", () => {
     fireEvent.submit(buttonEl);
 
     expect(dispatch).toHaveBeenCalledWith(setInputValue("sogoagain"));
-    expect(dispatch).toHaveBeenCalledWith(setInputValue(""));
+    expect(dispatch).toBeCalledTimes(2);
   });
 
   it("renders the queue", () => {
