@@ -10,6 +10,8 @@ import App from "./App";
 
 jest.mock("react-redux");
 
+jest.useFakeTimers();
+
 describe("App", () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -29,6 +31,7 @@ describe("App", () => {
             name: "홍길순",
           },
         ],
+        number: 1,
       },
     })
   );
@@ -88,6 +91,16 @@ describe("App", () => {
     ["홍길동", "홍길순"].forEach((name) => {
       const listItemEl = screen.getByText(new RegExp(name));
       expect(listItemEl).toBeInTheDocument();
+    });
+  });
+
+  context("when there are customers in the queue", () => {
+    it("calls the customer every 3 seconds", () => {
+      render(<App />);
+
+      jest.advanceTimersByTime(10);
+
+      expect(dispatch).toBeCalledTimes(2);
     });
   });
 });
