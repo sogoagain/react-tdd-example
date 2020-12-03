@@ -10,6 +10,8 @@ import {
   popQueue,
   increaseNumber,
   dequeue,
+  increaseWaitTime,
+  decreaseWaitTime,
 } from "./appSlice";
 
 const mockStore = configureStore(getDefaultMiddleware());
@@ -40,6 +42,7 @@ describe("app", () => {
       expect(actions[0]).toEqual(pushQueue({ number: 1, name: "홍길동" }));
       expect(actions[1]).toEqual(increaseNumber());
       expect(actions[2]).toEqual(setInputValue(""));
+      expect(actions[3]).toEqual(increaseWaitTime());
     });
   });
 
@@ -66,6 +69,7 @@ describe("app", () => {
 
         expect(actions[0]).toEqual(setCustomer("홍길동"));
         expect(actions[1]).toEqual(popQueue());
+        expect(actions[2]).toEqual(decreaseWaitTime());
       });
     });
 
