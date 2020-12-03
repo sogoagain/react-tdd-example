@@ -2,16 +2,10 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 
+import Queue from "../components/Queue";
+
 export default function QueueContainer() {
   const { queue } = useSelector(({ app }) => app);
 
-  return (
-    <ul>
-      {queue.map(({ number, name }) => (
-        <li key={number}>
-          [{number}] {name}
-        </li>
-      ))}
-    </ul>
-  );
+  return <Queue queue={queue} />;
 }
