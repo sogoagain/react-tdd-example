@@ -30,6 +30,14 @@ const { actions, reducer } = createSlice({
       ...state,
       number: state.number + 1,
     }),
+    increaseWaitTime: (state) => ({
+      ...state,
+      waitTime: state.waitTime + 3,
+    }),
+    decreaseWaitTime: (state) => ({
+      ...state,
+      waitTime: state.waitTime - 3,
+    }),
   },
 });
 
@@ -39,6 +47,8 @@ export const {
   pushQueue,
   popQueue,
   increaseNumber,
+  increaseWaitTime,
+  decreaseWaitTime,
 } = actions;
 
 export function enqueue() {
@@ -50,6 +60,7 @@ export function enqueue() {
     dispatch(pushQueue({ number, name: inputValue }));
     dispatch(increaseNumber());
     dispatch(setInputValue(""));
+    dispatch(increaseWaitTime());
   };
 }
 
@@ -65,6 +76,7 @@ export function dequeue() {
 
     dispatch(setCustomer(queue[0].name));
     dispatch(popQueue());
+    dispatch(decreaseWaitTime());
   };
 }
 
