@@ -14,9 +14,17 @@ const { actions, reducer } = createSlice({
       ...state,
       inputValue,
     }),
+    setCustomer: (state, { payload: customer }) => ({
+      ...state,
+      customer,
+    }),
     pushQueue: (state, { payload: item }) => ({
       ...state,
       queue: [...state.queue, item],
+    }),
+    popQueue: (state) => ({
+      ...state,
+      queue: [...state.queue.slice(1)],
     }),
     increaseNumber: (state) => ({
       ...state,
@@ -25,7 +33,13 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export const { setInputValue, pushQueue, increaseNumber } = actions;
+export const {
+  setInputValue,
+  setCustomer,
+  pushQueue,
+  popQueue,
+  increaseNumber,
+} = actions;
 
 export function enqueue() {
   return function (dispatch, getState) {
@@ -41,7 +55,12 @@ export function enqueue() {
 
 export function dequeue() {
   return function (dispatch, getState) {
-    return;
+    const {
+      app: { queue },
+    } = getState();
+
+    dispatch(setCustomer(queue[0].name));
+    dispatch(popQueue());
   };
 }
 
