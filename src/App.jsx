@@ -1,5 +1,11 @@
 import React from "react";
 
+import { useDispatch } from "react-redux";
+
+import useInterval from "use-interval";
+
+import { dequeue } from "./features/appSlice";
+
 import Title from "./components/Title";
 import Greetings from "./components/Greetings";
 
@@ -8,6 +14,12 @@ import NumberTagFormContainer from "./containers/NumberTagFormContainer";
 import QueueContainer from "./containers/QueueContainer";
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useInterval(() => {
+    dispatch(dequeue());
+  }, 3000);
+
   return (
     <>
       <Title />

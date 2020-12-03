@@ -38,4 +38,11 @@ export function enqueue() {
     dispatch(setInputValue(""));
   };
 }
+
+export function dequeue() {
+  return function (dispatch, getState) {
+    return;
+  };
+}
+
 export default reducer;

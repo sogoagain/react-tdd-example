@@ -10,8 +10,6 @@ import App from "./App";
 
 jest.mock("react-redux");
 
-jest.useFakeTimers();
-
 describe("App", () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -38,6 +36,10 @@ describe("App", () => {
 
   beforeEach(() => {
     dispatch.mockClear();
+  });
+
+  beforeAll(() => {
+    jest.useFakeTimers();
   });
 
   it("renders title", () => {
@@ -98,9 +100,9 @@ describe("App", () => {
     it("calls the customer every 3 seconds", () => {
       render(<App />);
 
-      jest.advanceTimersByTime(10);
+      jest.advanceTimersByTime(5999);
 
-      expect(dispatch).toBeCalledTimes(2);
+      expect(dispatch).toBeCalledTimes(1);
     });
   });
 });
